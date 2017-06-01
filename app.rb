@@ -6,4 +6,8 @@ class App < Sinatra::Base
   get '/' do
     File.read(File.join('public', 'index.html'))
   end
+
+  get '/teams' do
+    File.read(File.join('public', 'teams.html'))
+  end
 end
