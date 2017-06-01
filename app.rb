@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative 'system/routes/teams_routes'
 
 class App < Sinatra::Base
   set :public_folder, 'public'
