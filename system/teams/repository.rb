@@ -10,15 +10,20 @@ module Teams
         team
       end
 
-    private
+      def list
+        teams = collection.find
+        teams.map { |team_data| Teams::Team.from_bson(team_data) }
+      end
 
-    def connection
-      @connection ||= Mongo::Client.new(URI)
-    end
+      private
 
-    def collection
-      connection[:teams]
-    end
+      def connection
+        @connection ||= Mongo::Client.new(URI)
+      end
+
+      def collection
+        connection[:teams]
+      end
     end
   end
 end

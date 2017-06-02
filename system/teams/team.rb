@@ -1,12 +1,15 @@
 module Teams
-  class Team
-    attr_reader :name
-    def initialize(name)
-      @name = name
+  class Team < Domain::Team
+    class << self
+      def from_bson(data)
+        Teams::Team.new(data['name'])
+      end
+
+      alias_method :from_json, :from_bson
     end
 
     def serialize
-      { name: name }
+      { name: @name }
     end
   end
 end
