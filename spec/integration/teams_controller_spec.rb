@@ -3,6 +3,8 @@ require 'json'
 require_relative '../../app'
 require_relative '../../system/teams/repository'
 
+Mongo::Logger.logger.level = ::Logger::INFO
+
 class TestRepository < Teams::Repository
   def self.flush
     collection.delete_many
