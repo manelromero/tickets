@@ -15,6 +15,11 @@ module Teams
         teams.map { |team_data| Teams::Team.from_bson(team_data) }
       end
 
+      def retrieve(name)
+        team = collection.find({ name: name }).first
+        Teams::Team.from_bson(team)
+      end
+
       private
 
       def connection

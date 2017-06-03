@@ -11,12 +11,15 @@ class TestRepository < Teams::Repository
   end
 end
 
-describe 'Teams controller', :wip do
+describe 'Teams controller' do
   include Rack::Test::Methods
 
   it 'adds a team' do
     team_name = 'Some team'
     add_team(team_name)
+
+    payload = { 'name' => team_name }.to_json
+    post '/team/retrieve', payload
 
     result = parse_response['name']
     expect(result).to eq(team_name)

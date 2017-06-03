@@ -15,6 +15,11 @@ module Teams
         teams = Teams::Repository.list
         teams.map { |team| team.serialize }
       end
+
+      def retrieve(name)
+        team = Teams::Repository.retrieve(name)
+        team.serialize
+      end
     end
   end
 end

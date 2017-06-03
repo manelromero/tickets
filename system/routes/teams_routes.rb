@@ -12,4 +12,11 @@ class App < Sinatra::Base
     result = Teams::Service.list
     result.to_json
   end
+
+  post '/team/retrieve' do
+    team_data = JSON.parse(request.body.read)
+    team_name = team_data['name']
+    result = Teams::Service.retrieve(team_name)
+    result.to_json
+  end
 end
