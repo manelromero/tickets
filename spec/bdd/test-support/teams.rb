@@ -11,7 +11,7 @@ module Page
     private
 
     def validate!
-      assert_selector('#teams')
+      assert_selector('#formulary')
     end
   end
 end

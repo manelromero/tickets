@@ -6,10 +6,22 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="import" href="/polymer-elements/form.html">
     </head>
     <body>
         <div id="teams" class="container">
             <h1>Teams Page</h1>
+            <teams-form id="formulary"></teams-form>
         </div>
+
+        <script src="/vendor/class/class.min.js"></script>
+        <script src="/vendor/polymer/webcomponents-loader.js"></script>
+        <script src="/js/infrastructure/component.js"></script>
+
+        <script src="/js/components/teams/form.js"></script>
+
+        <script src="/js/pages/teams.js"></script>
+
+        <script src="/js/teams.js"></script>
     </body>
 </html>

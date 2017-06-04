@@ -1,0 +1,24 @@
+<link rel="import" href="/vendor/polymer/polymer-element.html">
+
+<dom-module id="teams-form">
+    <template>
+        <style></style>
+        This is the [[page]] form
+    </template>
+
+    <script>
+        class FormElement extends Polymer.Element {
+            static get is() { return 'teams-form'; }
+
+            static get properties() {
+                return {
+                    page: {
+                        type: String
+                    }
+                };
+            }
+        }
+
+        customElements.define(FormElement.is, FormElement);
+    </script>
+</dom-module>
