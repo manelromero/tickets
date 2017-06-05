@@ -9,6 +9,8 @@ module Teams
         team = Teams::Team.from_json(team_data)
         team_added = Teams::Repository.add(team)
         team_added.serialize
+      rescue
+        { success: false }
       end
 
       def list

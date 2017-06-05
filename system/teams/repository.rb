@@ -6,6 +6,7 @@ module Teams
 
     class << self
       def add(team)
+        return if exists?(team.name)
         collection.insert_one(team.serialize)
         team
       end
@@ -28,6 +29,10 @@ module Teams
 
       def collection
         connection[:teams]
+      end
+
+      def exists?(name)
+        collection.find({ name: name }).first
       end
     end
   end
