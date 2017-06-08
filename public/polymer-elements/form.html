@@ -2,13 +2,18 @@
 
 <dom-module id="teams-form">
     <template>
-        <div class="col-md-6">
-            <div class="form-group label-floating">
-                <label class="control-label" for="focusedInput1">Label</label>
-                <input class="form-control">
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
             </div>
-            <button class="btn btn-default">Send</button>
-        </div>
+        </form>
+
+        <button class="btn btn-primary">Send</button>
+
     </template>
 
     <script>
