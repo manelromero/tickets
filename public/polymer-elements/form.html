@@ -1,24 +1,19 @@
-<link rel="import" href="/vendor/polymer/polymer-element.html">
+<link rel="import" href="/vendor/polymer/polymer.html">
 
 <dom-module id="teams-form">
     <template>
-        <style></style>
-        This is the [[page]] form
+        <div class="col-md-6">
+            <div class="form-group label-floating">
+                <label class="control-label" for="focusedInput1">Label</label>
+                <input class="form-control">
+            </div>
+            <button class="btn btn-default">Send</button>
+        </div>
     </template>
 
     <script>
-        class FormElement extends Polymer.Element {
-            static get is() { return 'teams-form'; }
-
-            static get properties() {
-                return {
-                    page: {
-                        type: String
-                    }
-                };
-            }
-        }
-
-        customElements.define(FormElement.is, FormElement);
+        Polymer({
+            is: 'teams-form'
+        });
     </script>
 </dom-module>
