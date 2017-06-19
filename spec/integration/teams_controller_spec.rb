@@ -3,16 +3,14 @@ require 'json'
 require_relative '../../app'
 require_relative '../../system/teams/repository'
 
-Mongo::Logger.logger.level = ::Logger::INFO
-
 describe 'Teams controller' do
   include Rack::Test::Methods
 
-  before(:each) { TestRepository.flush }
+  before(:each) { Teams::Repository.flush }
 
   it 'adds a team' do
     team_name = 'Some team'
-    payload = { 'name' => team_name }.to_json
+    payload = { name: team_name }.to_json
     post '/teams/add', payload
 
     post '/team/retrieve', payload
@@ -21,7 +19,7 @@ describe 'Teams controller' do
     expect(result).to eq(team_name)
   end
 
-  it 'does not add repeated team', :wip do
+  it 'does not add repeated team' do
     team_name = 'Some team'
     payload = { 'name' => team_name }.to_json
     post '/teams/add', payload
@@ -33,19 +31,13 @@ describe 'Teams controller' do
   end
 
   it 'retrieves the team list' do
-    add_team('Some team')
-    add_team('Some other team')
+    payload = { 'name' => 'Some team' }.to_json
+    post '/teams/add', payload
 
     post '/teams/list'
 
     result = parse_response
     expect(result.any?).to be true
-  end
-end
-
-class TestRepository < Teams::Repository
-  def self.flush
-    collection.delete_many
   end
 end
 

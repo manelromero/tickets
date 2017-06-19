@@ -4,7 +4,8 @@ require_relative '../teams/service'
 class App < Sinatra::Base
   post '/teams/add' do
     team_data = JSON.parse(request.body.read)
-    result = Teams::Service.add(team_data)
+    team_name = team_data['name']
+    result = Teams::Service.add(team_name)
     result.to_json
   end
 

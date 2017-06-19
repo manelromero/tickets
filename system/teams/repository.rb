@@ -1,38 +1,31 @@
-require 'mongo'
-
 module Teams
   class Repository
-    URI = ENV['MONGODB_URI']
+    @content = []
 
     class << self
       def add(team)
         return if exists?(team.name)
-        collection.insert_one(team.serialize)
+        @content << team
         team
       end
 
       def list
-        teams = collection.find
-        teams.map { |team_data| Teams::Team.from_bson(team_data) }
+        @content
       end
 
       def retrieve(name)
-        team = collection.find({ name: name }).first
-        Teams::Team.from_bson(team)
+        team_found = @content.find { |team| team.name == name }
+        team_found
+      end
+
+      def flush
+        @content = []
       end
 
       private
 
-      def connection
-        @connection ||= Mongo::Client.new(URI)
-      end
-
-      def collection
-        connection[:teams]
-      end
-
       def exists?(name)
-        collection.find({ name: name }).first
+        @content.find { |team| team.name == name }
       end
     end
   end
