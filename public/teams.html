@@ -9,19 +9,27 @@
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 
-        <link rel="import" href="/polymer-elements/form.html">
+        <link rel="import" href="/polymer-elements/teams/form.html">
+        <link rel="import" href="/polymer-elements/teams/list.html">
     </head>
     <body>
         <div id="teams" class="container-fluid">
-            <h3 class="col-md-12">Teams Page</h3>
-            <teams-form id="formulary"></teams-form>
+            <div class="col-md-6">
+                <h3 class="col-md-12">Teams Page</h3>
+                <teams-form id="formulary" class="col-md-12"></teams-form>
+                <teams-list id="listing" class="col-md-12"></teams-list>
+            </div>
         </div>
 
         <script src="/vendor/polymer/webcomponents-lite.min.js"></script>
         <script src="/vendor/class/class.min.js"></script>
+        <script src="/js/infrastructure/bus.js"></script>
+        <script src="/js/infrastructure/service.js"></script>
         <script src="/js/infrastructure/component.js"></script>
 
         <script src="/js/components/teams/form.js"></script>
+
+        <script src="/js/services/teams.js"></script>
 
         <script src="/js/pages/teams.js"></script>
 

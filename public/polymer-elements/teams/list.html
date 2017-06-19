@@ -1,0 +1,22 @@
+<link rel="import" href="/vendor/polymer/polymer.html">
+
+<dom-module id="teams-list">
+    <template>
+        <h4>Team list</h4>
+        <ul class="list-group">
+            <template is="dom-repeat" items="{{list}}">
+                <li class="list-group-item" aria-hidden="true">{{item.name}}</li>
+            </template>
+        </ul>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'teams-list',
+
+            properties: {
+                list: { type: Array }
+            }
+        });
+    </script>
+</dom-module>

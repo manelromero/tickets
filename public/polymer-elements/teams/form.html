@@ -1,0 +1,38 @@
+<link rel="import" href="/vendor/polymer/polymer.html">
+
+<dom-module id="teams-form">
+    <template>
+            <div class="form-group">
+                <label>Team</label>
+                <input name="team-name" type="text" class="form-control" value="{{teamName::input}}" placeholder="Team">
+            </div>
+
+            <button name="submit" class="btn btn-default" on-click="clicked">Send</button>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'teams-form',
+
+            properties: {
+                teamName: { type: String, observer: 'validateValue' },
+                validName: { type: Boolean, value: false }
+            },
+
+            clicked: function() {
+                if (this.validName) {
+                    this.fire('submitted', this.teamName);
+                }
+                this.teamName = null;
+            },
+
+            validateValue: function() {
+                this.validName = this.firstUppercaseCharacter(this.teamName);
+            },
+
+            firstUppercaseCharacter: function(string) {
+                return /^[A-Z]/.test(string);
+            }
+        });
+    </script>
+</dom-module>
