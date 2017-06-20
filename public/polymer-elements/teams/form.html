@@ -7,7 +7,7 @@
                 <input name="team-name" type="text" class="form-control" value="{{teamName::input}}" placeholder="Team">
             </div>
 
-            <button name="submit" class="btn btn-default" on-click="clicked">Send</button>
+            <button name="submit" class="btn btn-default" on-click="clicked" disabled="{{saveDisabled}}">Save</button>
     </template>
 
     <script>
@@ -15,8 +15,9 @@
             is: 'teams-form',
 
             properties: {
+                saveDisabled: { type: Boolean, value: false },
                 teamName: { type: String, observer: 'validateValue' },
-                validName: { type: Boolean, value: false }
+                validName: { type: Boolean, value: false, observer: 'toggleSave' }
             },
 
             clicked: function() {
@@ -24,6 +25,14 @@
                     this.fire('submitted', this.teamName);
                 }
                 this.teamName = null;
+            },
+
+            toggleSave: function() {
+                if (this.validName) {
+                    this.saveDisabled = false;
+                } else {
+                    this.saveDisabled = true;
+                }
             },
 
             validateValue: function() {

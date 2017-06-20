@@ -22,6 +22,10 @@ module Page
       input_value == ''
     end
 
+    def save_enabled?
+      has_button?('Save', disabled: false)
+    end
+
     def fill(field, value)
       fill_in(field, with: value)
     end

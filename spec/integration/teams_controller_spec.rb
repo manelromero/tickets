@@ -19,7 +19,7 @@ describe 'Teams controller' do
     expect(result).to eq(team_name)
   end
 
-  it 'does not add repeated team' do
+  it 'does not add duplicated team' do
     team_name = 'Some team'
     payload = { 'name' => team_name }.to_json
     post '/teams/add', payload

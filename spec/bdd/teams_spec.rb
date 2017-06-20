@@ -4,8 +4,23 @@ require_relative 'test-support/teams_fixture'
 
 feature 'Teams page' do
   context 'form' do
+    scenario 'disallows team creation without first uppercase character' do
+      team_name = 'some team'
+      current = Teams::Fixture.form_filled(team_name)
+
+      expect(current.save_enabled?).to be false
+    end
+
+    scenario 'allows team creation with first uppercase character' do
+      team_name = 'Some team'
+      current = Teams::Fixture.form_filled(team_name)
+
+      expect(current.save_enabled?).to be true
+    end
+
     scenario 'empties itself when submitted' do
-      current = Teams::Fixture.form_filled
+      team_name = 'Some team'
+      current = Teams::Fixture.form_filled(team_name)
       current.click('[name=submit]')
 
       expect(current.empty_input?).to be true

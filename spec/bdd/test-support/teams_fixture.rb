@@ -7,9 +7,9 @@ module Teams
         Page::Teams.new
       end
 
-      def form_filled
+      def form_filled(team_name)
         current = initial
-        current.fill('team-name', 'Some team')
+        current.fill('team-name', team_name)
         current
       end
 
