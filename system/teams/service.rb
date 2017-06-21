@@ -15,6 +15,7 @@ module Teams
 
       def list
         teams = Teams::Repository.list
+        teams.sort_by! { |team| team.name }
         teams.map(&:serialize)
       end
 
